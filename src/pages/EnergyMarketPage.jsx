@@ -14,9 +14,8 @@ function EnergyMarketPage() {
       try {
         setLoading(true);
         const response = await axios.get("http://localhost:5173/energy/market");
-        console.log("API response:", response.data); // Debug API
+        console.log("API response:", response.data); 
 
-        // Ensure the response data is an array
         const sources = Array.isArray(response.data) ? response.data : [];
 
         setEnergySources(sources);

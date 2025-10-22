@@ -21,10 +21,9 @@ function LoginPage() {
 
       const data = response.data;
 
-      // Assuming response has token and user info
       localStorage.setItem("token", data.token);
       alert("Login successful!");
-      // You can redirect or update UI here
+      
     } catch (err) {
       if (err.response) {
         setError(err.response.data.message || "Failed to login");
