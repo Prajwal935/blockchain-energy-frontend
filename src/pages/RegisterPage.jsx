@@ -30,7 +30,6 @@ function RegisterPage() {
       });
 
       setSuccess("Registration successful! You can now log in.");
-      // Clear fields
       setName("");
       setEmail("");
       setRole("");
