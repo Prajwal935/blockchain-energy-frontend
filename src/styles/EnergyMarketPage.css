@@ -1,0 +1,76 @@
+.market-page {
+  max-width: 640px;
+  margin: 72px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(46, 125, 50, 0.15);
+  padding: 40px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2e3c25;
+}
+
+.market-page h2 {
+  color: #2e7d32;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.market-search {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.market-search input {
+  flex: 1;
+  padding: 0.85rem;
+  border: 2px solid #a5d6a7;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease;
+}
+.market-search input:focus {
+  border-color: #43a047;
+  outline: none;
+}
+
+.market-search button {
+  background-color: #43a047;
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 0 6px #43a047cc;
+}
+.market-search button:hover {
+  background-color: #2e7d32;
+}
+
+.market-list h3 {
+  color: #388e3c;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.market-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.market-list li {
+  background: #e6f4ea;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.7rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1b5e20;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.market-list li:hover {
+  background: #c8e6c9;
+  box-shadow: 0 4px 10px rgba(40, 170, 40, 0.3);
+}

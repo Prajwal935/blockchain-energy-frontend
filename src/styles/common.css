@@ -1,0 +1,27 @@
+a {
+  color: #43a047; /* brighter green */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #2e7d32;
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+button:hover:not(:disabled) {
+  box-shadow: 0 0 8px #43a047aa;
+}
+button:disabled {
+  background-color: #9e9e9e !important;
+  cursor: not-allowed;
+}
+
+::selection {
+  background: #a5d6a7;
+  color: #1b5e20;
+}
