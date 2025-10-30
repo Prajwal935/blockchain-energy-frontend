@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/LoginPage.css";
 
-function LoginPage() {
+function LoginPage({ setUserId }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -20,10 +20,10 @@ function LoginPage() {
       });
 
       const data = response.data;
-
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.user.id);
+      setUserId(data.user.id);  
       alert("Login successful!");
-      
     } catch (err) {
       if (err.response) {
         setError(err.response.data.message || "Failed to login");

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "../styles/RegisterEnergyPage.css";
+import "../styles/common.css";
 
-function RegisterEnergyPage() {
+function RegisterEnergyPage({ userId }) {
   const [volume, setVolume] = useState("");
   const [location, setLocation] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,7 +43,16 @@ function RegisterEnergyPage() {
   };
 
   return (
-    <div className="register-energy-page">
+    <div className="register-energy-page" style={{ position: "relative" }}>
+      {userId && (
+        <Link className="profile" to={`/users/${userId}`} title="Go to Profile">
+          Profile
+        </Link>
+      )}
+      {/* <Link className="profile" to={`/users/${userId}`} title="Go to Profile">
+        Profile
+      </Link> */}
+
       <h2>Register Your Energy</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -60,7 +71,10 @@ function RegisterEnergyPage() {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          disabled={loading || volume <= 0 || !location.trim()}
+        >
           {loading ? "Registering..." : "Register Energy"}
         </button>
       </form>

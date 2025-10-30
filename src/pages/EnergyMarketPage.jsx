@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "../styles/EnergyMarketPage.css";
+import "../styles/common.css";
 
-function EnergyMarketPage() {
+function EnergyMarketPage({ userId }) {
   const [energySources, setEnergySources] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredSources, setFilteredSources] = useState([]);
@@ -14,7 +16,7 @@ function EnergyMarketPage() {
       try {
         setLoading(true);
         const response = await axios.get("http://localhost:5173/energy/market");
-        console.log("API response:", response.data); 
+        console.log("API response:", response.data);
 
         const sources = Array.isArray(response.data) ? response.data : [];
 
@@ -46,34 +48,45 @@ function EnergyMarketPage() {
 
   return (
     <div className="market-page">
-      <h2>Energy Marketplace</h2>
-      <div className="market-search">
-        <input
-          type="text"
-          placeholder="Search by location, source..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-      {loading && <p>Loading energy sources...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {!loading && !error && (
-        <div className="market-list">
-          <h3>Energy Sources</h3>
-          {Array.isArray(filteredSources) && filteredSources.length > 0 ? (
-            <ul>
-              {filteredSources.map((source) => (
-                <li key={source.id}>
-                  {source.name} – {source.sourceType} – {source.volume} kWh –{" "}
-                  {source.location}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No energy sources match your search.</p>
-          )}
-        </div>
+      <div style={{ position: "relative" }}>
+        {userId && (
+        <Link className="profile" to={`/users/${userId}`}>
+          Profile
+        </Link>
       )}
+        {/* <Link className="profile" to={`/users/${userId}`}>
+          Profile
+        </Link> */}
+
+        <h2>Energy Marketplace</h2>
+        <div className="market-search">
+          <input
+            type="text"
+            placeholder="Search by location, source..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        {loading && <p>Loading energy sources...</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {!loading && !error && (
+          <div className="market-list">
+            <h3>Energy Sources</h3>
+            {Array.isArray(filteredSources) && filteredSources.length > 0 ? (
+              <ul>
+                {filteredSources.map((source) => (
+                  <li key={source.id}>
+                    {source.name} – {source.sourceType} – {source.volume} kWh –{" "}
+                    {source.location}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No energy sources match your search.</p>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
